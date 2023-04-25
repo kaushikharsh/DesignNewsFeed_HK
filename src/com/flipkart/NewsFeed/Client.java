@@ -53,7 +53,8 @@ public class Client {
 
         //POST A Feed
         FeedRepository feedRepository = new FeedRepository();
-        ShowFeedBasedOnOptionFactory showFeedBasedOnOptionFactory = new ShowFeedBasedOnOptionFactory(feedRepository);
+        FollowRepository followRepository = new FollowRepository(userRepository);
+        ShowFeedBasedOnOptionFactory showFeedBasedOnOptionFactory = new ShowFeedBasedOnOptionFactory(feedRepository,followRepository);
         FeedService feedService = new FeedService(sessionService, feedRepository,showFeedBasedOnOptionFactory);  //
         FeedController feedController = new FeedController(feedService);
 
@@ -112,7 +113,6 @@ public class Client {
 
 
         //User2 wants to Follow User1
-        FollowRepository followRepository = new FollowRepository(userRepository);
         FollowService followService = new FollowService(followRepository);
         FollowController followController = new FollowController(followService);
 
@@ -228,6 +228,7 @@ public class Client {
         System.out.println();
         System.out.println();
 
+        //User 3 making request to follow  User1
         FollowRequest followRequest2 = new FollowRequest();
         followRequest2.setUserToBeFollowed(loginResponse.getUserId()); //TobeFollowed i.e. User1
         followRequest2.setUserFollowed(loginResponse3.getUserId()); //Follow User1 buy User2 : Who followed user1 is user2
@@ -238,6 +239,7 @@ public class Client {
         System.out.println();
         System.out.println();
 
+        //
 
 
         //post some feeds

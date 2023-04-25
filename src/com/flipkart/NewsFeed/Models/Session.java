@@ -13,9 +13,6 @@ public class Session extends BaseModel{
         this.userId = userId;
     }
 
-    //private User user;
-    private Long userId;
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -25,4 +22,8 @@ public class Session extends BaseModel{
     }
 
     private LocalDateTime createdAt;
+
+    private Long userId;
+
+    //We can store UserName as well
 }

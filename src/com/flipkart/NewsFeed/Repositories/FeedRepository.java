@@ -4,6 +4,7 @@ import com.flipkart.NewsFeed.Models.Feed;
 import com.flipkart.NewsFeed.Models.User;
 import com.flipkart.NewsFeed.dto.FeedRequest;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,7 @@ public class FeedRepository {
             newFeed.setNo_Of_DownVotes(0);
             newFeed.setNo_Of_UpVotes(0);
             newFeed.setText(feed.getText());
-
+            newFeed.setPostedAt(LocalDateTime.now());
             //Add to the Feed List
             List<Feed> UserFeed = new ArrayList<>();
             UserFeed.add(newFeed);
@@ -45,6 +46,7 @@ public class FeedRepository {
         newFeed.setNo_Of_DownVotes(0);
         newFeed.setNo_Of_UpVotes(0);
         newFeed.setText(feed.getText());
+        newFeed.setPostedAt(LocalDateTime.now());
         //Add to the list
         CurrValue.add(newFeed);
         //Replace the existing data in the map
@@ -60,11 +62,9 @@ public class FeedRepository {
         System.out.println("No. Of Dislikes : " + feed.getNo_Of_DownVotes());
         System.out.println("Comments : " + feed.getComments());
     }
-    public List<Feed> getAllFeedsForUser(String option, Long UserId)
+    public List<Feed> getAllFeedsForUserWhoHavePosted(Long UserId)
     {
-        //There is an option for sorting like there can be an option for sorting Algorithm done according to different kind of Options
-        //we can apply startegy like which strategy we are following according to the options we have available.
-        return new ArrayList<>();
+        return Feeds.get(UserId);
     }
 
     public Feed getFedByFeedId(Long feedId, Long userId) {

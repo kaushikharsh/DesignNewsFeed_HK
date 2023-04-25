@@ -15,7 +15,6 @@ public class FeedService {
     private FeedRepository _feedRepository;
     private ShowFeedBasedOnOptionFactory _showFeedBasedOnOptionFactory;
 
-    private ShowFeedBasedOnOptionSortingStrategy _showFeedBasedOnOptionSortingStrategy;
     public FeedService(SessionService sessionService,FeedRepository feedRepository,ShowFeedBasedOnOptionFactory showFeedBasedOnOptionFactory)
     {
         _sessionService = sessionService;
@@ -36,7 +35,7 @@ public class FeedService {
     public List<GetAllFeedResponse> getAllFeedPostedByUser(GetALLFeedRequest getAllFeedRequest)
     {
         List<GetAllFeedResponse> getAllFeedResponses = new ArrayList<>();
-        List<Feed> feeds = _showFeedBasedOnOptionFactory.getShowFeedBasedOnOption(getAllFeedRequest.getOptions()).Sort();
+        List<Feed> feeds = _showFeedBasedOnOptionFactory.getShowFeedBasedOnOption(getAllFeedRequest.getOptions()).Sort(getAllFeedRequest.getUserId());
         for(Feed f : feeds)
         {
             GetAllFeedResponse getAllFeedResponse  = new GetAllFeedResponse();
@@ -50,5 +49,11 @@ public class FeedService {
         }
         return getAllFeedResponses;
     }
+    //getAllFeeds OF The User Followed By this.user (Current User)
+    public List<Feed> getAllFeedOfTheUserById(Long UserId)
+    {
+       return _feedRepository.getAllFeedsForUserWhoHavePosted(UserId);
+    }
+
 
 }

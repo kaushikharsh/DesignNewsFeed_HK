@@ -1,5 +1,6 @@
 package com.flipkart.NewsFeed.Models;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +47,15 @@ public class Feed extends BaseModel
         this.userId = userId;
     }
 
+    public LocalDateTime getPostedAt() {
+        return PostedAt;
+    }
+
+    public void setPostedAt(LocalDateTime postedAt) {
+        PostedAt = postedAt;
+    }
+
+    private LocalDateTime PostedAt;
     private String Text; // we are considering only Text Feed Now FOR MINIMAL VIABLE PRODUCT
     private List<Comment> comments;
     private int No_Of_UpVotes;

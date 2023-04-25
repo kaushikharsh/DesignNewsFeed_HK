@@ -18,5 +18,5 @@ public class GetALLFeedRequest {
     }
 
     private OptionRequest Options;   // Option Request By The User to sort the Feeds on the Basis of the Parameter
-    private Long UserId;
+    private Long UserId;  // User Who Posted The Feeds
 }

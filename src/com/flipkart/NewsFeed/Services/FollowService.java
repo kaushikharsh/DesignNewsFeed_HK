@@ -41,4 +41,10 @@ public class FollowService {
         getFollowersResponse.setNoOfFollowers(Followers.size());
         return getFollowersResponse;
     }
+
+    //get the Following of the Current User
+    public List<User> GetFollowingOfUser(Long UserId)
+    {
+        return _followRepository.getAllUserFollowing(UserId);
+    }
 }

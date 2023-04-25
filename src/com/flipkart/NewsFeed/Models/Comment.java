@@ -44,12 +44,6 @@ public class Comment extends BaseModel{
         this.commentedAt = commentedAt;
     }
 
-    private String text;
-    private Long userId;
-    private String UserName;
-    private Long FeedId;
-    private LocalDateTime commentedAt;
-
     public int getNoOFLikes() {
         return NoOFLikes;
     }
@@ -65,7 +59,11 @@ public class Comment extends BaseModel{
     public void setNoOfDislike(int noOfDislike) {
         NoOfDislike = noOfDislike;
     }
-
+    private String text;
+    private Long userId;
+    private String UserName;
+    private Long FeedId;
+    private LocalDateTime commentedAt;
     private int NoOFLikes;
     private int NoOfDislike;
 }
